@@ -21,7 +21,7 @@ module.exports = {
           ['theme', './theme/'],
           ['hooks', './hooks/'],
           ['helpers', './helpers/'],
-          ['slices', './slices/']
+          ['slices', './slices/'],
         ],
       },
     },
