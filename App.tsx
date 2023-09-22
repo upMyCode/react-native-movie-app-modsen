@@ -4,8 +4,16 @@ import SplashScreen from 'react-native-splash-screen';
 
 function App(): JSX.Element {
   useEffect(() => {
-    SplashScreen.hide();
-  });
+    const ac = new AbortController();
+
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 10000);
+
+    return function cleanup() {
+      ac.abort();
+    };
+  }, []);
   return <SafeAreaView />;
 }
 
