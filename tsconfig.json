@@ -36,7 +36,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@helpers/*": ["src/helpers/*"],
       "@slices/*": ["src/slices/*"],
-      "@assets/*": ["src/assets/index"]
+      "@assets": ["src/assets/index"]
     }
   }
 }

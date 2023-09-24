@@ -8,12 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* reactNativeMoviesAppForModsenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* reactNativeMoviesAppForModsenTests.m */; };
+		0B469411BD0E4A8D9CA89135 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABF1866AC66F4B3A9C018B92 /* Inter-Black.ttf */; };
+		0B51601599FC4D44B02BE25D /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 001B582C0B604CA2826CE1DA /* Inter-ExtraLight.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-reactNativeMoviesAppForModsen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-reactNativeMoviesAppForModsen.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1A2BE4605A4748FB819C6522 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02DF8AC72AA44E3AAA33529A /* Inter-Bold.ttf */; };
+		24818E26CC134C5BB202CA95 /* InriaSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15FE9259F2FA45AC87C16E1F /* InriaSans-LightItalic.ttf */; };
+		28EA394175924C52A4A0AFA5 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B0E05C629FB43F3B873ACCE /* Inter-ExtraBold.ttf */; };
+		4449597F7C1844A28F827BB7 /* InriaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEE6F2E5F4404E44AA3A0B05 /* InriaSans-Regular.ttf */; };
+		5D4313C9A38B4CD69E2956FC /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7881E0DC7F26462FB9A3345B /* Inter-Thin.ttf */; };
+		6EFAE285442541338A210AF2 /* InriaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 011E37550AAD48B8B397F05C /* InriaSans-Light.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9FC3418B4CE84340A0A2C78E /* InriaSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBF94D7D40394EA5B065EA71 /* InriaSans-BoldItalic.ttf */; };
+		AD45C70026CD4D6EA03F21D8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8AEE84AAC8364F768D5D9B42 /* Inter-Regular.ttf */; };
+		B9587153610548AAA93C9507 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26E77CB137F84021B410C5CA /* Inter-Medium.ttf */; };
+		C080B27D75684AE18F220124 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70F55FC1B40A494A9CF87955 /* Inter-SemiBold.ttf */; };
+		C3CCE87F06DE4A1C8AFE23FB /* InriaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DF67AD9A344A11B79DB1DE /* InriaSans-Bold.ttf */; };
+		CE27AE98CD2B4E5C98915C42 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17FBAC69A8B847178DEE1919 /* Inter-Light.ttf */; };
+		DC708C81E5484D12AD2417FA /* InriaSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 736A068754824DC88B91C1A7 /* InriaSans-Italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,23 +42,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		001B582C0B604CA2826CE1DA /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../src/assets/fonts/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* reactNativeMoviesAppForModsenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reactNativeMoviesAppForModsenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* reactNativeMoviesAppForModsenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = reactNativeMoviesAppForModsenTests.m; sourceTree = "<group>"; };
+		011E37550AAD48B8B397F05C /* InriaSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "InriaSans-Light.ttf"; path = "../src/assets/fonts/InriaSans-Light.ttf"; sourceTree = "<group>"; };
+		02DF8AC72AA44E3AAA33529A /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../src/assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* reactNativeMoviesAppForModsen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reactNativeMoviesAppForModsen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = reactNativeMoviesAppForModsen/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = reactNativeMoviesAppForModsen/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = reactNativeMoviesAppForModsen/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = reactNativeMoviesAppForModsen/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = reactNativeMoviesAppForModsen/main.m; sourceTree = "<group>"; };
+		15FE9259F2FA45AC87C16E1F /* InriaSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "InriaSans-LightItalic.ttf"; path = "../src/assets/fonts/InriaSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		17FBAC69A8B847178DEE1919 /* Inter-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Light.ttf"; path = "../src/assets/fonts/Inter-Light.ttf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B0E05C629FB43F3B873ACCE /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.ttf"; path = "../src/assets/fonts/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		26E77CB137F84021B410C5CA /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../src/assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
+		30DF67AD9A344A11B79DB1DE /* InriaSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "InriaSans-Bold.ttf"; path = "../src/assets/fonts/InriaSans-Bold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-reactNativeMoviesAppForModsen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactNativeMoviesAppForModsen.debug.xcconfig"; path = "Target Support Files/Pods-reactNativeMoviesAppForModsen/Pods-reactNativeMoviesAppForModsen.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-reactNativeMoviesAppForModsen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactNativeMoviesAppForModsen.release.xcconfig"; path = "Target Support Files/Pods-reactNativeMoviesAppForModsen/Pods-reactNativeMoviesAppForModsen.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.debug.xcconfig"; path = "Target Support Files/Pods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests/Pods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-reactNativeMoviesAppForModsen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactNativeMoviesAppForModsen.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70F55FC1B40A494A9CF87955 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../src/assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		736A068754824DC88B91C1A7 /* InriaSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "InriaSans-Italic.ttf"; path = "../src/assets/fonts/InriaSans-Italic.ttf"; sourceTree = "<group>"; };
+		7881E0DC7F26462FB9A3345B /* Inter-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Thin.ttf"; path = "../src/assets/fonts/Inter-Thin.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = reactNativeMoviesAppForModsen/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.release.xcconfig"; path = "Target Support Files/Pods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests/Pods-reactNativeMoviesAppForModsen-reactNativeMoviesAppForModsenTests.release.xcconfig"; sourceTree = "<group>"; };
+		8AEE84AAC8364F768D5D9B42 /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../src/assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		ABF1866AC66F4B3A9C018B92 /* Inter-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Black.ttf"; path = "../src/assets/fonts/Inter-Black.ttf"; sourceTree = "<group>"; };
+		CBF94D7D40394EA5B065EA71 /* InriaSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "InriaSans-BoldItalic.ttf"; path = "../src/assets/fonts/InriaSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EEE6F2E5F4404E44AA3A0B05 /* InriaSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "InriaSans-Regular.ttf"; path = "../src/assets/fonts/InriaSans-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +152,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				8624D89E7DB945D6B643791F /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,6 +166,29 @@
 				00E356EE1AD99517003FC87E /* reactNativeMoviesAppForModsenTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8624D89E7DB945D6B643791F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				30DF67AD9A344A11B79DB1DE /* InriaSans-Bold.ttf */,
+				CBF94D7D40394EA5B065EA71 /* InriaSans-BoldItalic.ttf */,
+				736A068754824DC88B91C1A7 /* InriaSans-Italic.ttf */,
+				011E37550AAD48B8B397F05C /* InriaSans-Light.ttf */,
+				15FE9259F2FA45AC87C16E1F /* InriaSans-LightItalic.ttf */,
+				EEE6F2E5F4404E44AA3A0B05 /* InriaSans-Regular.ttf */,
+				ABF1866AC66F4B3A9C018B92 /* Inter-Black.ttf */,
+				02DF8AC72AA44E3AAA33529A /* Inter-Bold.ttf */,
+				1B0E05C629FB43F3B873ACCE /* Inter-ExtraBold.ttf */,
+				001B582C0B604CA2826CE1DA /* Inter-ExtraLight.ttf */,
+				17FBAC69A8B847178DEE1919 /* Inter-Light.ttf */,
+				26E77CB137F84021B410C5CA /* Inter-Medium.ttf */,
+				8AEE84AAC8364F768D5D9B42 /* Inter-Regular.ttf */,
+				70F55FC1B40A494A9CF87955 /* Inter-SemiBold.ttf */,
+				7881E0DC7F26462FB9A3345B /* Inter-Thin.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -244,6 +298,21 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C3CCE87F06DE4A1C8AFE23FB /* InriaSans-Bold.ttf in Resources */,
+				9FC3418B4CE84340A0A2C78E /* InriaSans-BoldItalic.ttf in Resources */,
+				DC708C81E5484D12AD2417FA /* InriaSans-Italic.ttf in Resources */,
+				6EFAE285442541338A210AF2 /* InriaSans-Light.ttf in Resources */,
+				24818E26CC134C5BB202CA95 /* InriaSans-LightItalic.ttf in Resources */,
+				4449597F7C1844A28F827BB7 /* InriaSans-Regular.ttf in Resources */,
+				0B469411BD0E4A8D9CA89135 /* Inter-Black.ttf in Resources */,
+				1A2BE4605A4748FB819C6522 /* Inter-Bold.ttf in Resources */,
+				28EA394175924C52A4A0AFA5 /* Inter-ExtraBold.ttf in Resources */,
+				0B51601599FC4D44B02BE25D /* Inter-ExtraLight.ttf in Resources */,
+				CE27AE98CD2B4E5C98915C42 /* Inter-Light.ttf in Resources */,
+				B9587153610548AAA93C9507 /* Inter-Medium.ttf in Resources */,
+				AD45C70026CD4D6EA03F21D8 /* Inter-Regular.ttf in Resources */,
+				C080B27D75684AE18F220124 /* Inter-SemiBold.ttf in Resources */,
+				5D4313C9A38B4CD69E2956FC /* Inter-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
