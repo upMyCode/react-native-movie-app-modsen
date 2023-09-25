@@ -1,6 +1,13 @@
 import { FacebookIMG, GithubIMG, GoogleIMG, PersonIMG } from '@assets';
+import React from 'react';
 
-export default function useAuthButtons() {
+type SetModalOpen = React.Dispatch<React.SetStateAction<boolean>>;
+
+export default function useAuthButtons(setModalOpen: SetModalOpen) {
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
   const BUTTONS_LIST = [
     {
       id: '1',
@@ -11,6 +18,9 @@ export default function useAuthButtons() {
       bRadius: 10,
       width: 310,
       height: 45,
+      onPress: () => {
+        return handleOpenModal();
+      },
     },
     {
       id: '2',
@@ -21,6 +31,9 @@ export default function useAuthButtons() {
       bRadius: 10,
       width: 310,
       height: 45,
+      onPress: () => {
+        console.log(2);
+      },
     },
     {
       id: '3',
@@ -31,6 +44,9 @@ export default function useAuthButtons() {
       bRadius: 10,
       width: 310,
       height: 45,
+      onPress: () => {
+        console.log(3);
+      },
     },
     {
       id: '4',
@@ -41,6 +57,9 @@ export default function useAuthButtons() {
       bRadius: 10,
       width: 310,
       height: 45,
+      onPress: () => {
+        console.log(4);
+      },
     },
   ];
 

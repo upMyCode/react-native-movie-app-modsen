@@ -5,6 +5,7 @@ enum TextStrings {
   RegistrationScreenAuthDescriptionQuestion = 'Already has an account?',
   RegistrationScreenAuthDescriptionLink = ' Login please.',
   RegistrationScreenFooterDescription = '2023 Version 0.0.1',
+  RegistrationFormButton = 'Sign up',
 }
 
 export default TextStrings;

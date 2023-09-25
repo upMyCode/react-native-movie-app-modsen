@@ -2,8 +2,13 @@ import IMAGE_LIST from '@constants/registrationMenuImage';
 import TextStrings from '@constants/strings';
 import { ModsenLogoIMG } from '@helpers/images';
 import useAuthButtons from '@hooks/useAuthButtons';
-import { Button, ManagedStatusBar } from '@root';
-import React from 'react';
+import {
+  Button,
+  ManagedStatusBar,
+  ModalContainer,
+  RegistrationForm,
+} from '@root';
+import React, { useState } from 'react';
 import type { ListRenderItemInfo } from 'react-native';
 import { FlatList, Image, TouchableOpacity, View } from 'react-native';
 
@@ -24,7 +29,9 @@ import {
 import type { RenderAuthItemProps, RenderFooterImageItemProps } from './types';
 
 export default function RegistrationScreen() {
-  const { BUTTONS_LIST } = useAuthButtons();
+  const [isModalOpened, setModalOpen] = useState<boolean>(false);
+  const [modalName, setModalName] = useState<string>('registration');
+  const { BUTTONS_LIST } = useAuthButtons(setModalOpen);
 
   const renderAuthItem = ({
     item,
@@ -37,9 +44,7 @@ export default function RegistrationScreen() {
         height={item.height}
         bgColor={item.bgColor}
         bRadius={item.bRadius}
-        onPress={() => {
-          return console.log('Auth');
-        }}
+        onPress={item.onPress}
       >
         <AuthTextContent textColor={item.textColor}>
           {item.textContent}
@@ -65,9 +70,26 @@ export default function RegistrationScreen() {
     );
   };
 
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setModalName('registration');
+  };
+
   return (
     <Wrapper>
       <ManagedStatusBar />
+      {isModalOpened && modalName === 'registration' && (
+        <ModalContainer
+          title="Create an account"
+          modalVisible={isModalOpened}
+          fSize={20}
+          fLineHeight={30}
+          width={310}
+          handleModalOnClose={handleCloseModal}
+        >
+          <RegistrationForm />
+        </ModalContainer>
+      )}
       <ImageContainer>
         <Image source={{ uri: ModsenLogoIMG }} width={200} height={50} />
       </ImageContainer>

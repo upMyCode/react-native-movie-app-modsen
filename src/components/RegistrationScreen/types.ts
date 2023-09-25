@@ -13,6 +13,7 @@ export interface RenderAuthItemProps {
   bRadius: number;
   width: number;
   height: number;
+  onPress: () => void;
 }
 
 export interface RenderFooterImageItemProps {
