@@ -4,6 +4,7 @@ import { ModsenLogoIMG } from '@helpers/images';
 import useAuthButtons from '@hooks/useAuthButtons';
 import {
   Button,
+  LogInForm,
   ManagedStatusBar,
   ModalContainer,
   RegistrationForm,
@@ -17,7 +18,7 @@ import {
   AuthDescriptionItem,
   AuthImage,
   AuthTextContent,
-  ButonsGroup,
+  ButtonsGroup,
   FooterDescription,
   FooterDescriptionContent,
   FooterImagesContainer,
@@ -75,6 +76,11 @@ export default function RegistrationScreen() {
     setModalName('registration');
   };
 
+  const handleOpenLogInModal = () => {
+    setModalOpen(true);
+    setModalName('login');
+  };
+
   return (
     <Wrapper>
       <ManagedStatusBar />
@@ -87,7 +93,19 @@ export default function RegistrationScreen() {
           width={310}
           handleModalOnClose={handleCloseModal}
         >
-          <RegistrationForm />
+          <RegistrationForm modalName={modalName} setModalName={setModalName} />
+        </ModalContainer>
+      )}
+      {isModalOpened && modalName === 'login' && (
+        <ModalContainer
+          title="Sign in to an account"
+          modalVisible={isModalOpened}
+          fSize={20}
+          fLineHeight={30}
+          width={310}
+          handleModalOnClose={handleCloseModal}
+        >
+          <LogInForm setModalName={setModalName} setModalOpen={setModalOpen} />
         </ModalContainer>
       )}
       <ImageContainer>
@@ -98,7 +116,7 @@ export default function RegistrationScreen() {
           {TextStrings.RegistrationScreenDescription}
         </TextDescription>
       </TextDescriptionContainer>
-      <ButonsGroup>
+      <ButtonsGroup>
         <FlatList
           contentContainerStyle={{
             alignItems: 'center',
@@ -109,16 +127,12 @@ export default function RegistrationScreen() {
           data={BUTTONS_LIST}
           renderItem={renderAuthItem}
         />
-      </ButonsGroup>
+      </ButtonsGroup>
       <AuthDescriptionContainer>
         <AuthDescriptionItem isUnderlined={false}>
           {TextStrings.RegistrationScreenAuthDescriptionQuestion}
         </AuthDescriptionItem>
-        <TouchableOpacity
-          onPress={() => {
-            return console.log('Auth');
-          }}
-        >
+        <TouchableOpacity onPress={handleOpenLogInModal}>
           <AuthDescriptionItem isUnderlined>
             {TextStrings.RegistrationScreenAuthDescriptionLink}
           </AuthDescriptionItem>

@@ -27,7 +27,7 @@ export const TextDescription = styled.Text`
   color: #ffffff;
 `;
 
-export const ButonsGroup = styled.View`
+export const ButtonsGroup = styled.View`
   margin-top: 10px;
 `;
 

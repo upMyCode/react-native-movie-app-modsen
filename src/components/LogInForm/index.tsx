@@ -1,31 +1,26 @@
 import TextStrings from '@constants/strings';
-import {
-  UserEmail,
-  UserNameIMG,
-  UserPassword,
-  UserSurnameImg,
-} from '@helpers/images';
+import { UserEmail, UserPassword } from '@helpers/images';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Input } from '@root';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import {
   FormWrapper,
-  RegistrationButtonContainer,
-  RegistrationText,
+  LogInButtonContainer,
+  LogInRedirectionToForgotPasswordContainer,
+  LogInRedirectionToForgotPasswordText,
+  LogInText,
 } from './styles';
-import { FormValues, RegistrationFormProps } from './types';
+import { FormValues, LogInFormProps } from './types';
 import validationSchema from './validationShema';
 
-export default function RegistrationForm({
+export default function LogInForm({
   setModalName,
-  modalName,
-}: RegistrationFormProps) {
+  setModalOpen,
+}: LogInFormProps) {
   const defaultValues = {
-    username: '',
-    usersurname: '',
     useremail: '',
     userpassword: '',
   };
@@ -39,8 +34,9 @@ export default function RegistrationForm({
   });
 
   const handleSubmitForm = (data: FormValues) => {
+    setModalName('registration');
+    setModalOpen(false);
     console.log(data);
-    setModalName('login');
   };
 
   return (
@@ -48,28 +44,10 @@ export default function RegistrationForm({
       <FormWrapper>
         <Input
           control={control}
-          name="username"
-          icon={UserNameIMG}
-          formType="default"
-          placeholder="Enter your name"
-          maxLength={30}
-          error={errors.username?.message ?? ''}
-        />
-        <Input
-          control={control}
-          name="usersurname"
-          icon={UserSurnameImg}
-          formType="default"
-          placeholder="Enter your surname"
-          maxLength={30}
-          error={errors.usersurname?.message ?? ''}
-        />
-        <Input
-          control={control}
           name="useremail"
           icon={UserEmail}
           formType="default"
-          placeholder="Enter your email"
+          placeholder="example@gmail.com"
           maxLength={30}
           error={errors.useremail?.message ?? ''}
         />
@@ -78,28 +56,31 @@ export default function RegistrationForm({
           name="userpassword"
           icon={UserPassword}
           formType="default"
-          placeholder="Enter strong password"
+          placeholder="*************************"
           maxLength={16}
           secureTextEntry
           error={errors.userpassword?.message ?? ''}
-          modalName={modalName}
         />
       </FormWrapper>
-
-      <RegistrationButtonContainer>
+      <LogInRedirectionToForgotPasswordContainer>
+        <TouchableOpacity>
+          <LogInRedirectionToForgotPasswordText>
+            {TextStrings.LogInFormRedirectionToForgotPassword}
+          </LogInRedirectionToForgotPasswordText>
+        </TouchableOpacity>
+      </LogInRedirectionToForgotPasswordContainer>
+      <LogInButtonContainer>
         <Button
           width={100}
           height={31}
           bgColor="#D98639"
           bRadius={10}
-          mt={30}
+          mt={21}
           onPress={handleSubmit(handleSubmitForm)}
         >
-          <RegistrationText>
-            {TextStrings.RegistrationFormButton}
-          </RegistrationText>
+          <LogInText>{TextStrings.LogInFormButton}</LogInText>
         </Button>
-      </RegistrationButtonContainer>
+      </LogInButtonContainer>
     </View>
   );
 }

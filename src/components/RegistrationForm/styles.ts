@@ -12,3 +12,7 @@ export const RegistrationButtonContainer = styled.View`
   align-items: center;
   margin-bottom: 18px;
 `;
+
+export const FormWrapper = styled.View`
+  margin: 0 50px 0 25px;
+`;

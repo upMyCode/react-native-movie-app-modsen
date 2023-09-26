@@ -16,6 +16,7 @@ export const Content = styled.View<ContentProps>`
     return width;
   }}px;
   border-radius: 10px;
+  width: 320px;
 `;
 
 export const ContentHeader = styled.View`
@@ -40,8 +41,6 @@ export const HeaderText = styled.Text<HeaderTextProps>`
 
 export const ContentMain = styled.View`
   display: flex;
-  align-items: center;
-  max-height: 310px;
 `;
 
 export const HeaderButtonContainer = styled.View`
