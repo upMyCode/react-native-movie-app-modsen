@@ -16,3 +16,11 @@ export const RegistrationButtonContainer = styled.View`
 export const FormWrapper = styled.View`
   margin: 0 50px 0 25px;
 `;
+
+export const RegistrationErrorText = styled.Text`
+  font-family: 'Poppins-Regular';
+  color: #ed051c;
+  line-height: 21px;
+  font-size: 14px;
+  max-width: 210px;
+`;

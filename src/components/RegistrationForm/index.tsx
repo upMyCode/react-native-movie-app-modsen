@@ -7,13 +7,17 @@ import {
 } from '@helpers/images';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Input } from '@root';
-import React from 'react';
+import { createNewUser } from '@slices/createUserSlice';
+import { handleSignup } from '@src/api/authApi';
+import { useAppDispatch } from '@src/store/hooks';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
 
 import {
   FormWrapper,
   RegistrationButtonContainer,
+  RegistrationErrorText,
   RegistrationText,
 } from './styles';
 import { FormValues, RegistrationFormProps } from './types';
@@ -23,6 +27,8 @@ export default function RegistrationForm({
   setModalName,
   modalName,
 }: RegistrationFormProps) {
+  const [registrationError, setRegistrationError] = useState<string>('');
+  const dispatch = useAppDispatch();
   const defaultValues = {
     username: '',
     usersurname: '',
@@ -38,9 +44,30 @@ export default function RegistrationForm({
     resolver: yupResolver(validationSchema),
   });
 
-  const handleSubmitForm = (data: FormValues) => {
-    console.log(data);
-    setModalName('login');
+  const handleSubmitForm = async (data: FormValues) => {
+    const response = await handleSignup(
+      data.useremail,
+      data.userpassword,
+      data.username,
+      data.usersurname
+    );
+
+    if (response && typeof response !== 'string') {
+      const userData = {
+        id: response.uid,
+        username: data.useremail,
+        userpassword: data.userpassword,
+        useremail: data.useremail,
+        usersurname: data.usersurname,
+      };
+      dispatch(createNewUser(userData));
+    } else if (response) {
+      setRegistrationError(response);
+      setRegistrationError('');
+    }
+    if (registrationError) {
+      setModalName('login');
+    }
   };
 
   return (
@@ -84,6 +111,9 @@ export default function RegistrationForm({
           error={errors.userpassword?.message ?? ''}
           modalName={modalName}
         />
+        {registrationError && (
+          <RegistrationErrorText>{registrationError}</RegistrationErrorText>
+        )}
       </FormWrapper>
 
       <RegistrationButtonContainer>

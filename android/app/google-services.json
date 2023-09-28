@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "805216139458",
+    "project_id": "modsen-movie",
+    "storage_bucket": "modsen-movie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805216139458:android:ba2286df92463e4dace35b",
+        "android_client_info": {
+          "package_name": "com.reactnativemoviesappformodsen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805216139458-972qju2voghcgvvjojo02shi30kv56ed.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBrK-OO3WLNUsDnxmBiqBPTgfidu6nB1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805216139458-972qju2voghcgvvjojo02shi30kv56ed.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
