@@ -1,11 +1,40 @@
 import { FacebookIMG, GithubIMG, GoogleIMG, PersonIMG } from '@assets';
-import React from 'react';
+import { createNewUser } from '@slices/createUserSlice';
+import { handleSignInWithGoogleServiceAPI } from '@src/api/authApi';
+import { useAppDispatch } from '@src/store/hooks';
+import React, { useState } from 'react';
 
 type SetModalOpen = React.Dispatch<React.SetStateAction<boolean>>;
+interface AuthErrors {
+  googleError: string;
+  facebookError: string;
+  githubError: string;
+}
 
 export default function useAuthButtons(setModalOpen: SetModalOpen) {
+  const dispatch = useAppDispatch();
+  const [authError, setAuthError] = useState<AuthErrors>({
+    googleError: '',
+    facebookError: '',
+    githubError: '',
+  });
   const handleOpenModal = () => {
     setModalOpen(true);
+  };
+
+  const handleSignInByGoogle = async () => {
+    const response = await handleSignInWithGoogleServiceAPI();
+
+    if (response && typeof response !== 'string') {
+      dispatch(createNewUser);
+    } else if (response && typeof response === 'string') {
+      setAuthError((errors) => {
+        return {
+          ...errors,
+          googleError: response,
+        };
+      });
+    }
   };
 
   const BUTTONS_LIST = [
@@ -18,9 +47,7 @@ export default function useAuthButtons(setModalOpen: SetModalOpen) {
       bRadius: 10,
       width: 310,
       height: 45,
-      onPress: () => {
-        return handleOpenModal();
-      },
+      onPress: handleOpenModal,
     },
     {
       id: '2',
@@ -31,9 +58,7 @@ export default function useAuthButtons(setModalOpen: SetModalOpen) {
       bRadius: 10,
       width: 310,
       height: 45,
-      onPress: () => {
-        console.log(2);
-      },
+      onPress: handleSignInByGoogle,
     },
     {
       id: '3',
@@ -63,5 +88,5 @@ export default function useAuthButtons(setModalOpen: SetModalOpen) {
     },
   ];
 
-  return { BUTTONS_LIST };
+  return { BUTTONS_LIST, authError };
 }

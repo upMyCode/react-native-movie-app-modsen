@@ -103,7 +103,6 @@ export default function RegistrationForm({
           <RegistrationErrorText>{registrationError}</RegistrationErrorText>
         )}
       </FormWrapper>
-
       <RegistrationButtonContainer>
         <Button
           width={100}

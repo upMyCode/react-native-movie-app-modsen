@@ -51,7 +51,6 @@ export default function LogInForm({
         username: response.username,
         usersurname: response.usersurname,
         useremail: response.useremail,
-        userpassword: response.userpassword,
       };
       dispatch(createNewUser(USER));
       setModalOpen(false);

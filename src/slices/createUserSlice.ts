@@ -5,7 +5,6 @@ interface User {
   username: string;
   usersurname: string;
   useremail: string;
-  userpassword: string;
 }
 
 interface State {

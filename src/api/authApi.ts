@@ -1,12 +1,16 @@
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { firebase } from '@react-native-firebase/database';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
+GoogleSignin.configure();
 interface USER {
   id: string;
   username: string;
   usersurname: string;
   useremail: string;
-  userpassword: string;
 }
 interface FirebaseErrorAPI {
   code: string;
@@ -45,7 +49,6 @@ export const handleSignUpAPI = async (
           id: isUserCreated.user.uid,
           username: name,
           useremail: email,
-          userpassword: password,
           usersurname: surname,
         });
 
@@ -88,6 +91,55 @@ export const handleSignInAPI = async (
     if (isFirebaseError(error)) {
       return error.code;
     }
+    return '';
+  }
+};
+
+export const handleSignInWithGoogleServiceAPI = async (): Promise<
+  null | USER | string
+> => {
+  GoogleSignin.configure();
+
+  try {
+    await GoogleSignin.hasPlayServices();
+    const isUserCreated = await GoogleSignin.signIn();
+
+    if (isUserCreated) {
+      const authReference = firebase
+        .app()
+        .database(
+          'https://modsen-movie-default-rtdb.europe-west1.firebasedatabase.app'
+        )
+        .ref(`/users/${isUserCreated.user.id}`);
+
+      if (authReference) {
+        const USER = {
+          id: isUserCreated.user.id,
+          username: isUserCreated.user.name || '',
+          useremail: isUserCreated.user.email,
+          usersurname: isUserCreated.user.familyName || '',
+        };
+        await authReference.set(USER);
+
+        return USER;
+      }
+    }
+
+    return null;
+  } catch (error) {
+    if (isFirebaseError(error)) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        return 'auth/sign-in-canceled';
+      }
+      if (error.code === statusCodes.IN_PROGRESS) {
+        return 'in-in-progress';
+      }
+      if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        return 'play-service-not-available';
+      }
+      return error.code;
+    }
+
     return '';
   }
 };

@@ -3,7 +3,6 @@ interface USER {
   username: string;
   usersurname: string;
   useremail: string;
-  userpassword: string;
 }
 
 interface User {
