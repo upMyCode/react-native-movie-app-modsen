@@ -1,14 +1,19 @@
+import FIREBASE_ERROR from '@constants/firebaseError';
 import TextStrings from '@constants/strings';
 import { UserEmail, UserPassword } from '@helpers/images';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Input } from '@root';
-import React from 'react';
+import { createNewUser } from '@slices/createUserSlice';
+import { handleSignInAPI } from '@src/api/authApi';
+import { useAppDispatch } from '@src/store/hooks';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
 
 import {
   FormWrapper,
   LogInButtonContainer,
+  LogInErrorText,
   LogInRedirectionToForgotPasswordContainer,
   LogInRedirectionToForgotPasswordText,
   LogInText,
@@ -20,6 +25,8 @@ export default function LogInForm({
   setModalName,
   setModalOpen,
 }: LogInFormProps) {
+  const dispatch = useAppDispatch();
+  const [logInError, setLogInError] = useState<string>('');
   const defaultValues = {
     useremail: '',
     userpassword: '',
@@ -33,10 +40,23 @@ export default function LogInForm({
     resolver: yupResolver(validationSchema),
   });
 
-  const handleSubmitForm = (data: FormValues) => {
-    setModalName('registration');
-    setModalOpen(false);
-    console.log(data);
+  const handleSubmitForm = async (data: FormValues) => {
+    const response = await handleSignInAPI(data.useremail, data.userpassword);
+
+    if (response && typeof response === 'string') {
+      setLogInError(FIREBASE_ERROR[response]);
+    } else if (response && typeof response !== 'string') {
+      const USER = {
+        id: response.id,
+        username: response.username,
+        usersurname: response.usersurname,
+        useremail: response.useremail,
+        userpassword: response.userpassword,
+      };
+      dispatch(createNewUser(USER));
+      setModalOpen(false);
+      setModalName('registration');
+    }
   };
 
   return (
@@ -61,6 +81,7 @@ export default function LogInForm({
           secureTextEntry
           error={errors.userpassword?.message ?? ''}
         />
+        {logInError && <LogInErrorText>{logInError}</LogInErrorText>}
       </FormWrapper>
       <LogInRedirectionToForgotPasswordContainer>
         <TouchableOpacity>

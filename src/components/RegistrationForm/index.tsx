@@ -1,3 +1,4 @@
+import FIREBASE_ERROR from '@constants/firebaseError';
 import TextStrings from '@constants/strings';
 import {
   UserEmail,
@@ -7,9 +8,7 @@ import {
 } from '@helpers/images';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Input } from '@root';
-import { createNewUser } from '@slices/createUserSlice';
-import { handleSignup } from '@src/api/authApi';
-import { useAppDispatch } from '@src/store/hooks';
+import { handleSignUpAPI } from '@src/api/authApi';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
@@ -28,7 +27,7 @@ export default function RegistrationForm({
   modalName,
 }: RegistrationFormProps) {
   const [registrationError, setRegistrationError] = useState<string>('');
-  const dispatch = useAppDispatch();
+
   const defaultValues = {
     username: '',
     usersurname: '',
@@ -45,27 +44,16 @@ export default function RegistrationForm({
   });
 
   const handleSubmitForm = async (data: FormValues) => {
-    const response = await handleSignup(
+    const response = await handleSignUpAPI(
       data.useremail,
       data.userpassword,
       data.username,
       data.usersurname
     );
 
-    if (response && typeof response !== 'string') {
-      const userData = {
-        id: response.uid,
-        username: data.useremail,
-        userpassword: data.userpassword,
-        useremail: data.useremail,
-        usersurname: data.usersurname,
-      };
-      dispatch(createNewUser(userData));
-    } else if (response) {
-      setRegistrationError(response);
-      setRegistrationError('');
-    }
-    if (registrationError) {
+    if (response && typeof response === 'string') {
+      setRegistrationError(FIREBASE_ERROR[response]);
+    } else if (response && typeof response !== 'string') {
       setModalName('login');
     }
   };

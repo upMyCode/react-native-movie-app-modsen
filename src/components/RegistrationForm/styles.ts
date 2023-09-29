@@ -18,6 +18,7 @@ export const FormWrapper = styled.View`
 `;
 
 export const RegistrationErrorText = styled.Text`
+  margin-top: 2px;
   font-family: 'Poppins-Regular';
   color: #ed051c;
   line-height: 21px;
