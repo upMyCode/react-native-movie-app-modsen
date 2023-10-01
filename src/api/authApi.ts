@@ -4,8 +4,10 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import { AccessToken, LoginManager } from 'react-native-fbsdk-next';
 
-GoogleSignin.configure();
+type UserProfile = FirebaseAuthTypes.AdditionalUserInfo['profile'];
+
 interface USER {
   id: string;
   username: string;
@@ -19,6 +21,20 @@ interface FirebaseErrorAPI {
 
 function isFirebaseError(candidate: unknown): candidate is FirebaseErrorAPI {
   if (candidate && typeof candidate === 'object' && 'code' in candidate) {
+    return true;
+  }
+  return false;
+}
+
+function isFirebaseFacebookUser(candidate: unknown): candidate is UserProfile {
+  if (
+    candidate &&
+    typeof candidate === 'object' &&
+    'email' in candidate &&
+    'first_name' in candidate &&
+    'last_name' in candidate &&
+    'id' in candidate
+  ) {
     return true;
   }
   return false;
@@ -140,6 +156,68 @@ export const handleSignInWithGoogleServiceAPI = async (): Promise<
       return error.code;
     }
 
+    return '';
+  }
+};
+
+export const handleSignInWithFacebookServiceAPI = async (): Promise<
+  null | USER | string
+> => {
+  try {
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+    ]);
+
+    if (result.isCancelled) {
+      return 'User cancelled the login process';
+    }
+
+    // Once signed in, get the users AccessToken
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      return 'Something went wrong obtaining access token';
+    }
+
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(
+      data.accessToken
+    );
+
+    // Sign-in the user with the credential
+    const isUserCreated = await auth().signInWithCredential(facebookCredential);
+
+    if (isUserCreated) {
+      if (isUserCreated.additionalUserInfo) {
+        const currentUserInfo = isUserCreated.additionalUserInfo.profile;
+        if (isFirebaseFacebookUser(currentUserInfo) && currentUserInfo) {
+          const authReference = firebase
+            .app()
+            .database(
+              'https://modsen-movie-default-rtdb.europe-west1.firebasedatabase.app'
+            )
+            .ref(`/users/${currentUserInfo.id}`);
+
+          if (authReference) {
+            const USER = {
+              id: currentUserInfo.id,
+              username: currentUserInfo.first_name || '',
+              useremail: currentUserInfo.email,
+              usersurname: currentUserInfo.last_name || '',
+            };
+            await authReference.set(USER);
+
+            return USER;
+          }
+        }
+      }
+    }
+    return null;
+  } catch (error) {
+    if (isFirebaseError(error)) {
+      return error.code;
+    }
     return '';
   }
 };

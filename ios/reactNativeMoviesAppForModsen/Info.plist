@@ -100,5 +100,23 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-</dict>
+  
+  <key>CFBundleURLTypes</key>
+  <array>
+      <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb277330705259174</string>
+      </array>
+      </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>277330705259174</string>
+    <key>FacebookClientToken</key>
+    <string>19e9a6a137e4ac13b0549ab4abc9e1ac</string>
+    <key>FacebookDisplayName</key>
+    <string>
+      modsen-movie-app
+    </string>
+  </dict>
 </plist>

@@ -1,6 +1,9 @@
 import { FacebookIMG, GithubIMG, GoogleIMG, PersonIMG } from '@assets';
 import { createNewUser } from '@slices/createUserSlice';
-import { handleSignInWithGoogleServiceAPI } from '@src/api/authApi';
+import {
+  handleSignInWithFacebookServiceAPI,
+  handleSignInWithGoogleServiceAPI,
+} from '@src/api/authApi';
 import { useAppDispatch } from '@src/store/hooks';
 import React, { useState } from 'react';
 
@@ -32,6 +35,21 @@ export default function useAuthButtons(setModalOpen: SetModalOpen) {
         return {
           ...errors,
           googleError: response,
+        };
+      });
+    }
+  };
+
+  const handleSignInByFacebook = async () => {
+    const response = await handleSignInWithFacebookServiceAPI();
+
+    if (response && typeof response !== 'string') {
+      dispatch(createNewUser);
+    } else if (response && typeof response === 'string') {
+      setAuthError((errors) => {
+        return {
+          ...errors,
+          facebookError: response,
         };
       });
     }
@@ -69,9 +87,7 @@ export default function useAuthButtons(setModalOpen: SetModalOpen) {
       bRadius: 10,
       width: 310,
       height: 45,
-      onPress: () => {
-        console.log(3);
-      },
+      onPress: handleSignInByFacebook,
     },
     {
       id: '4',
