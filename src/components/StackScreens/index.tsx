@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { TabScreens } from '@root';
 import WelcomeScreen from '@screens/WelcomeScreen';
 import React from 'react';
 
@@ -15,6 +16,7 @@ export default function StackScreens() {
         initialRouteName="WelcomeScreen"
       >
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+        <Stack.Screen name="TabScreens" component={TabScreens} />
       </Stack.Navigator>
     </NavigationContainer>
   );

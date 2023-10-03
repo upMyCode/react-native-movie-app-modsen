@@ -17,8 +17,8 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
    [super application:application didFinishLaunchingWithOptions:launchOptions];
-   [FIRApp configure];
    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+   [FIRApp configure];
    [RNSplashScreen show];
 
   return YES;

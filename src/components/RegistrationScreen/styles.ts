@@ -79,3 +79,11 @@ export const FooterDescription = styled.Text`
   line-height: 14px;
   color: #ffffff;
 `;
+
+export const AuthInErrorText = styled.Text`
+  font-family: 'Poppins-Regular';
+  color: #ed051c;
+  line-height: 21px;
+  font-size: 14px;
+  max-width: 210px;
+`;

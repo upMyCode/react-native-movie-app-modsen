@@ -17,6 +17,7 @@ import {
   AuthDescriptionContainer,
   AuthDescriptionItem,
   AuthImage,
+  AuthInErrorText,
   AuthTextContent,
   ButtonsGroup,
   FooterDescription,
@@ -27,12 +28,19 @@ import {
   TextDescriptionContainer,
   Wrapper,
 } from './styles';
-import type { RenderAuthItemProps, RenderFooterImageItemProps } from './types';
+import type {
+  AuthErrors,
+  RenderAuthItemProps,
+  RenderFooterImageItemProps,
+} from './types';
 
 export default function RegistrationScreen() {
   const [isModalOpened, setModalOpen] = useState<boolean>(false);
   const [modalName, setModalName] = useState<string>('registration');
-  const { BUTTONS_LIST } = useAuthButtons(setModalOpen);
+  const { BUTTONS_LIST, authError } = useAuthButtons(
+    setModalOpen,
+    setModalName
+  );
 
   const renderAuthItem = ({
     item,
@@ -81,9 +89,32 @@ export default function RegistrationScreen() {
     setModalName('login');
   };
 
+  const checkAuthErrorType = (error: AuthErrors) => {
+    if (error.googleError) {
+      return error.googleError;
+    }
+    if (error.facebookError) {
+      return error.googleError;
+    }
+
+    return '';
+  };
+
   return (
     <Wrapper>
       <ManagedStatusBar />
+      {isModalOpened && modalName === 'authErrors' && (
+        <ModalContainer
+          title="Oops, you have auth errors"
+          modalVisible={isModalOpened}
+          fSize={20}
+          fLineHeight={30}
+          width={350}
+          handleModalOnClose={handleCloseModal}
+        >
+          <AuthInErrorText>{checkAuthErrorType(authError)}</AuthInErrorText>
+        </ModalContainer>
+      )}
       {isModalOpened && modalName === 'registration' && (
         <ModalContainer
           title="Create an account"

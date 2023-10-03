@@ -26,3 +26,9 @@ export interface RenderFooterImageItemProps {
 export interface AuthDescriptionItemProps {
   isUnderlined: boolean;
 }
+
+export interface AuthErrors {
+  googleError: string;
+  facebookError: string;
+  githubError: string;
+}

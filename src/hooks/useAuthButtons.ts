@@ -8,13 +8,17 @@ import { useAppDispatch } from '@src/store/hooks';
 import React, { useState } from 'react';
 
 type SetModalOpen = React.Dispatch<React.SetStateAction<boolean>>;
+type SetModalName = React.Dispatch<React.SetStateAction<string>>;
 interface AuthErrors {
   googleError: string;
   facebookError: string;
   githubError: string;
 }
 
-export default function useAuthButtons(setModalOpen: SetModalOpen) {
+export default function useAuthButtons(
+  setModalOpen: SetModalOpen,
+  setModalName: SetModalName
+) {
   const dispatch = useAppDispatch();
   const [authError, setAuthError] = useState<AuthErrors>({
     googleError: '',
@@ -37,6 +41,8 @@ export default function useAuthButtons(setModalOpen: SetModalOpen) {
           googleError: response,
         };
       });
+      setModalName('authErrors');
+      handleOpenModal();
     }
   };
 
@@ -52,6 +58,9 @@ export default function useAuthButtons(setModalOpen: SetModalOpen) {
           facebookError: response,
         };
       });
+      console.log(authError, response);
+      setModalName('authErrors');
+      handleOpenModal();
     }
   };
 

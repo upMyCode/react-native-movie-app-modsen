@@ -23,6 +23,12 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb277330705259174</string>
+			</array>
+		</dict>
+		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
@@ -33,6 +39,14 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FacebookAppID</key>
+	<string>277330705259174</string>
+	<key>FacebookClientToken</key>
+	<string>19e9a6a137e4ac13b0549ab4abc9e1ac</string>
+	<key>FacebookDisplayName</key>
+	<string>
+      modsen-movie-app
+    </string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -100,23 +114,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  
-  <key>CFBundleURLTypes</key>
-  <array>
-      <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb277330705259174</string>
-      </array>
-      </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>277330705259174</string>
-    <key>FacebookClientToken</key>
-    <string>19e9a6a137e4ac13b0549ab4abc9e1ac</string>
-    <key>FacebookDisplayName</key>
-    <string>
-      modsen-movie-app
-    </string>
-  </dict>
+</dict>
 </plist>

@@ -2,6 +2,8 @@ import FIREBASE_ERROR from '@constants/firebaseError';
 import TextStrings from '@constants/strings';
 import { UserEmail, UserPassword } from '@helpers/images';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigation } from '@react-navigation/core';
+import type { StackNavigationProp } from '@react-navigation/stack';
 import { Button, Input } from '@root';
 import { createNewUser } from '@slices/createUserSlice';
 import { handleSignInAPI } from '@src/api/authApi';
@@ -18,7 +20,7 @@ import {
   LogInRedirectionToForgotPasswordText,
   LogInText,
 } from './styles';
-import { FormValues, LogInFormProps } from './types';
+import { FormValues, LogInFormProps, StackScreensParamList } from './types';
 import validationSchema from './validationShema';
 
 export default function LogInForm({
@@ -27,6 +29,8 @@ export default function LogInForm({
 }: LogInFormProps) {
   const dispatch = useAppDispatch();
   const [logInError, setLogInError] = useState<string>('');
+  const navigation =
+    useNavigation<StackNavigationProp<StackScreensParamList>>();
   const defaultValues = {
     useremail: '',
     userpassword: '',
@@ -55,6 +59,7 @@ export default function LogInForm({
       dispatch(createNewUser(USER));
       setModalOpen(false);
       setModalName('registration');
+      navigation.navigate('TabScreens');
     }
   };
 

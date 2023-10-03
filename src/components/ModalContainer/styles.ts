@@ -16,7 +16,9 @@ export const Content = styled.View<ContentProps>`
     return width;
   }}px;
   border-radius: 10px;
-  width: 320px;
+  width: ${({ width }) => {
+    return width;
+  }}px;
 `;
 
 export const ContentHeader = styled.View`

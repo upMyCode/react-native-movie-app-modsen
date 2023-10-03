@@ -221,3 +221,16 @@ export const handleSignInWithFacebookServiceAPI = async (): Promise<
     return '';
   }
 };
+
+// Github auth
+// export const handleSignInWithGithubServiceAPI = async () => {
+//   try {
+//     const token = auth.GithubAuthProvider;
+
+//   } catch (error) {
+//     if (isFirebaseError(error)) {
+//       return error.code;
+//     }
+//     return '';
+//   }
+// };
