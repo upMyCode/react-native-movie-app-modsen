@@ -4,6 +4,7 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import axios from 'axios';
 import { AccessToken, LoginManager } from 'react-native-fbsdk-next';
 
 type UserProfile = FirebaseAuthTypes.AdditionalUserInfo['profile'];
@@ -145,13 +146,13 @@ export const handleSignInWithGoogleServiceAPI = async (): Promise<
   } catch (error) {
     if (isFirebaseError(error)) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        return 'auth/sign-in-canceled';
+        return 'Sign-in was canceled';
       }
       if (error.code === statusCodes.IN_PROGRESS) {
-        return 'in-in-progress';
+        return 'Sign-in in progress';
       }
       if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        return 'play-service-not-available';
+        return 'Play service wasn`t be available';
       }
       return error.code;
     }
@@ -222,15 +223,30 @@ export const handleSignInWithFacebookServiceAPI = async (): Promise<
   }
 };
 
-// Github auth
-// export const handleSignInWithGithubServiceAPI = async () => {
-//   try {
-//     const token = auth.GithubAuthProvider;
+export const handleGetMovies = async (label: string) => {
+  const options = {
+    method: 'GET',
+    url: 'https://ott-details.p.rapidapi.com/advancedsearch',
+    params: {
+      start_year: '1970',
+      end_year: '2020',
+      min_imdb: '7',
+      genre: label,
+      language: 'english',
+      type: 'movie',
+      sort: 'latest',
+      page: '1',
+    },
+    headers: {
+      'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+      'X-RapidAPI-Host': 'ott-details.p.rapidapi.com',
+    },
+  };
 
-//   } catch (error) {
-//     if (isFirebaseError(error)) {
-//       return error.code;
-//     }
-//     return '';
-//   }
-// };
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};

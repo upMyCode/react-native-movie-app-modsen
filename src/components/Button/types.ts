@@ -12,6 +12,7 @@ export interface ButtonProps {
   mt?: number;
   ml?: number;
   disabled?: boolean | undefined;
+  onFocus?: () => void;
 }
 
 export interface PaintedButtonProps {

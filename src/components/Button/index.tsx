@@ -15,6 +15,7 @@ export default function Button({
   mt,
   ml,
   disabled,
+  onFocus,
 }: ButtonProps) {
   return (
     <PaintedButton
@@ -24,6 +25,7 @@ export default function Button({
       bgColor={bgColor}
       bRadius={bRadius}
       onPress={onPress}
+      onFocus={onFocus}
       bColor={bColor}
       boxShadow={boxShadow}
       mt={mt}

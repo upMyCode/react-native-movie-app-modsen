@@ -1,4 +1,6 @@
 import { FacebookIMG, GithubIMG, GoogleIMG, PersonIMG } from '@assets';
+import { useNavigation } from '@react-navigation/core';
+import type { StackNavigationProp } from '@react-navigation/stack';
 import { createNewUser } from '@slices/createUserSlice';
 import {
   handleSignInWithFacebookServiceAPI,
@@ -15,11 +17,18 @@ interface AuthErrors {
   githubError: string;
 }
 
+type StackScreensParamList = {
+  WelcomeScreen: undefined;
+  TabScreens: undefined;
+};
+
 export default function useAuthButtons(
   setModalOpen: SetModalOpen,
   setModalName: SetModalName
 ) {
   const dispatch = useAppDispatch();
+  const navigation =
+    useNavigation<StackNavigationProp<StackScreensParamList>>();
   const [authError, setAuthError] = useState<AuthErrors>({
     googleError: '',
     facebookError: '',
@@ -34,6 +43,7 @@ export default function useAuthButtons(
 
     if (response && typeof response !== 'string') {
       dispatch(createNewUser);
+      navigation.navigate('TabScreens');
     } else if (response && typeof response === 'string') {
       setAuthError((errors) => {
         return {
@@ -51,6 +61,7 @@ export default function useAuthButtons(
 
     if (response && typeof response !== 'string') {
       dispatch(createNewUser);
+      navigation.navigate('TabScreens');
     } else if (response && typeof response === 'string') {
       setAuthError((errors) => {
         return {

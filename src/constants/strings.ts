@@ -8,6 +8,7 @@ enum TextStrings {
   RegistrationFormButton = 'Sign up',
   LogInFormButton = 'Sign in',
   LogInFormRedirectionToForgotPassword = 'Forgot password?',
+  MainScreenComingSoonTitle = 'Coming Soon',
 }
 
 export default TextStrings;

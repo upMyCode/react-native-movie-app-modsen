@@ -6,6 +6,7 @@ export { default as LogInForm } from '@components/LogInForm';
 export { default as MainScreen } from '@components/MainScreen';
 export { default as ManagedStatusBar } from '@components/ManagedStatusBar';
 export { default as ModalContainer } from '@components/ModalContainer';
+export { default as MovieButton } from '@components/MovieButton';
 export { default as RegistrationForm } from '@components/RegistrationForm';
 export { default as RegistrationScreen } from '@components/RegistrationScreen';
 export { default as StackScreens } from '@components/StackScreens';

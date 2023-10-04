@@ -87,3 +87,7 @@ export const AuthInErrorText = styled.Text`
   font-size: 14px;
   max-width: 210px;
 `;
+
+export const ErrorContainer = styled.View`
+  margin: 0 17px 15px 25px;
+`;

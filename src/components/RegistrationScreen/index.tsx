@@ -20,6 +20,7 @@ import {
   AuthInErrorText,
   AuthTextContent,
   ButtonsGroup,
+  ErrorContainer,
   FooterDescription,
   FooterDescriptionContent,
   FooterImagesContainer,
@@ -112,7 +113,9 @@ export default function RegistrationScreen() {
           width={350}
           handleModalOnClose={handleCloseModal}
         >
-          <AuthInErrorText>{checkAuthErrorType(authError)}</AuthInErrorText>
+          <ErrorContainer>
+            <AuthInErrorText>{checkAuthErrorType(authError)}</AuthInErrorText>
+          </ErrorContainer>
         </ModalContainer>
       )}
       {isModalOpened && modalName === 'registration' && (
