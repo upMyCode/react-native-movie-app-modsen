@@ -1,3 +1,4 @@
+import { RegistrationScreenDimensions } from '@constants/dimensions';
 import IMAGE_LIST from '@constants/registrationMenuImage';
 import TextStrings from '@constants/strings';
 import { ModsenLogoIMG } from '@helpers/images';
@@ -25,6 +26,7 @@ import {
   FooterDescriptionContent,
   FooterImagesContainer,
   ImageContainer,
+  inlineStyles,
   TextDescription,
   TextDescriptionContainer,
   Wrapper,
@@ -59,7 +61,11 @@ export default function RegistrationScreen() {
         <AuthTextContent textColor={item.textColor}>
           {item.textContent}
         </AuthTextContent>
-        <AuthImage source={{ uri: ButtonIMG }} height={18} width={18} />
+        <AuthImage
+          source={{ uri: ButtonIMG }}
+          height={RegistrationScreenDimensions.buttonWidth}
+          width={RegistrationScreenDimensions.buttonHeight}
+        />
       </Button>
     );
   };
@@ -106,11 +112,11 @@ export default function RegistrationScreen() {
       <ManagedStatusBar />
       {isModalOpened && modalName === 'authErrors' && (
         <ModalContainer
-          title="Oops, you have auth errors"
+          title={TextStrings.RegistrationScreenModalContainerTitleError}
           modalVisible={isModalOpened}
-          fSize={20}
-          fLineHeight={30}
-          width={350}
+          fSize={RegistrationScreenDimensions.modalFSize1}
+          fLineHeight={RegistrationScreenDimensions.modalLHeight1}
+          width={RegistrationScreenDimensions.modalWidth1}
           handleModalOnClose={handleCloseModal}
         >
           <ErrorContainer>
@@ -120,11 +126,11 @@ export default function RegistrationScreen() {
       )}
       {isModalOpened && modalName === 'registration' && (
         <ModalContainer
-          title="Create an account"
+          title={TextStrings.RegistrationScreenModalContainerTitleRegistration}
           modalVisible={isModalOpened}
-          fSize={20}
-          fLineHeight={30}
-          width={310}
+          fSize={RegistrationScreenDimensions.modalFSize2}
+          fLineHeight={RegistrationScreenDimensions.modalLHeight2}
+          width={RegistrationScreenDimensions.modalWidth2}
           handleModalOnClose={handleCloseModal}
         >
           <RegistrationForm modalName={modalName} setModalName={setModalName} />
@@ -132,18 +138,22 @@ export default function RegistrationScreen() {
       )}
       {isModalOpened && modalName === 'login' && (
         <ModalContainer
-          title="Sign in to an account"
+          title={TextStrings.RegistrationScreenModalContainerTitleLogin}
           modalVisible={isModalOpened}
-          fSize={20}
-          fLineHeight={30}
-          width={310}
+          fSize={RegistrationScreenDimensions.modalFSize2}
+          fLineHeight={RegistrationScreenDimensions.modalLHeight2}
+          width={RegistrationScreenDimensions.modalWidth2}
           handleModalOnClose={handleCloseModal}
         >
           <LogInForm setModalName={setModalName} setModalOpen={setModalOpen} />
         </ModalContainer>
       )}
       <ImageContainer>
-        <Image source={{ uri: ModsenLogoIMG }} width={200} height={50} />
+        <Image
+          source={{ uri: ModsenLogoIMG }}
+          width={RegistrationScreenDimensions.logoImageWidth}
+          height={RegistrationScreenDimensions.logoImageHeight}
+        />
       </ImageContainer>
       <TextDescriptionContainer>
         <TextDescription>
@@ -152,9 +162,7 @@ export default function RegistrationScreen() {
       </TextDescriptionContainer>
       <ButtonsGroup>
         <FlatList
-          contentContainerStyle={{
-            alignItems: 'center',
-          }}
+          contentContainerStyle={inlineStyles.flatList1}
           keyExtractor={({ id }) => {
             return id;
           }}
@@ -174,7 +182,7 @@ export default function RegistrationScreen() {
       </AuthDescriptionContainer>
       <FooterImagesContainer>
         <FlatList
-          columnWrapperStyle={{ justifyContent: 'space-between' }}
+          columnWrapperStyle={inlineStyles.flatList2}
           numColumns={4}
           keyExtractor={({ id }) => {
             return id;

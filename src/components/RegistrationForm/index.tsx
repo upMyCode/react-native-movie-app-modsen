@@ -1,3 +1,4 @@
+import { RegistrationFormDimensions } from '@constants/dimensions';
 import FIREBASE_ERROR from '@constants/firebaseError';
 import TextStrings from '@constants/strings';
 import {
@@ -8,7 +9,8 @@ import {
 } from '@helpers/images';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Input } from '@root';
-import { handleSignUpAPI } from '@src/api/authApi';
+import { handleSignUpAPI } from '@src/api/authAPI/authApi';
+import { RegistrationFormDarkTheme } from '@theme/allThemes';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { View } from 'react-native';
@@ -63,38 +65,38 @@ export default function RegistrationForm({
       <FormWrapper>
         <Input
           control={control}
-          name="username"
+          name={TextStrings.RegistrationFormInut1Name}
           icon={UserNameIMG}
           formType="default"
-          placeholder="Enter your name"
-          maxLength={30}
+          placeholder={TextStrings.RegistrationFormInut1placeholder}
+          maxLength={RegistrationFormDimensions.inputMLength}
           error={errors.username?.message ?? ''}
         />
         <Input
           control={control}
-          name="usersurname"
+          name={TextStrings.RegistrationFormInut2Name}
           icon={UserSurnameImg}
           formType="default"
-          placeholder="Enter your surname"
-          maxLength={30}
+          placeholder={TextStrings.RegistrationFormInut2placeholder}
+          maxLength={RegistrationFormDimensions.inputMLength}
           error={errors.usersurname?.message ?? ''}
         />
         <Input
           control={control}
-          name="useremail"
+          name={TextStrings.RegistrationFormInut3Name}
           icon={UserEmail}
           formType="default"
-          placeholder="Enter your email"
-          maxLength={30}
+          placeholder={TextStrings.RegistrationFormInut3placeholder}
+          maxLength={RegistrationFormDimensions.inputMLength}
           error={errors.useremail?.message ?? ''}
         />
         <Input
           control={control}
-          name="userpassword"
+          name={TextStrings.RegistrationFormInut4Name}
           icon={UserPassword}
           formType="default"
-          placeholder="Enter strong password"
-          maxLength={16}
+          placeholder={TextStrings.RegistrationFormInut4placeholder}
+          maxLength={RegistrationFormDimensions.inputMLengthXL}
           secureTextEntry
           error={errors.userpassword?.message ?? ''}
           modalName={modalName}
@@ -105,11 +107,11 @@ export default function RegistrationForm({
       </FormWrapper>
       <RegistrationButtonContainer>
         <Button
-          width={100}
-          height={31}
-          bgColor="#D98639"
-          bRadius={10}
-          mt={30}
+          width={RegistrationFormDimensions.buttonWidth}
+          height={RegistrationFormDimensions.buttonHeight}
+          bgColor={RegistrationFormDarkTheme.button}
+          bRadius={RegistrationFormDimensions.buttonBRadius}
+          mt={RegistrationFormDimensions.buttonBRadius}
           onPress={handleSubmit(handleSubmitForm)}
         >
           <RegistrationText>

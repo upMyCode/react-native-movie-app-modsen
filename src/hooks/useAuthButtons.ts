@@ -5,7 +5,7 @@ import { createNewUser } from '@slices/createUserSlice';
 import {
   handleSignInWithFacebookServiceAPI,
   handleSignInWithGoogleServiceAPI,
-} from '@src/api/authApi';
+} from '@src/api/authAPI/authApi';
 import { useAppDispatch } from '@src/store/hooks';
 import React, { useState } from 'react';
 

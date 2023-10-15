@@ -1,3 +1,4 @@
+import { LogInFormDimensions } from '@constants/dimensions';
 import FIREBASE_ERROR from '@constants/firebaseError';
 import TextStrings from '@constants/strings';
 import { UserEmail, UserPassword } from '@helpers/images';
@@ -6,8 +7,9 @@ import { useNavigation } from '@react-navigation/core';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { Button, Input } from '@root';
 import { createNewUser } from '@slices/createUserSlice';
-import { handleSignInAPI } from '@src/api/authApi';
+import { handleSignInAPI } from '@src/api/authAPI/authApi';
 import { useAppDispatch } from '@src/store/hooks';
+import { LogInFormDarkTheme } from '@theme/allThemes';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TouchableOpacity, View } from 'react-native';
@@ -68,19 +70,19 @@ export default function LogInForm({
       <FormWrapper>
         <Input
           control={control}
-          name="useremail"
+          name={TextStrings.LogInFormInputNameUserEmail}
           icon={UserEmail}
           formType="default"
-          placeholder="example@gmail.com"
+          placeholder={TextStrings.LogInFormInputNameUserEmailPlaceHolder}
           maxLength={30}
           error={errors.useremail?.message ?? ''}
         />
         <Input
           control={control}
-          name="userpassword"
+          name={TextStrings.LogInFormInputNameUserPassword}
           icon={UserPassword}
           formType="default"
-          placeholder="*************************"
+          placeholder={TextStrings.LogInFormInputNameUserPasswordPlaceHolder}
           maxLength={16}
           secureTextEntry
           error={errors.userpassword?.message ?? ''}
@@ -96,11 +98,11 @@ export default function LogInForm({
       </LogInRedirectionToForgotPasswordContainer>
       <LogInButtonContainer>
         <Button
-          width={100}
-          height={31}
-          bgColor="#D98639"
-          bRadius={10}
-          mt={21}
+          width={LogInFormDimensions.loginButtonWidth}
+          height={LogInFormDimensions.loginButtonHeight}
+          bgColor={LogInFormDarkTheme.buttonColor}
+          bRadius={LogInFormDimensions.loginButtonBorderRadius}
+          mt={LogInFormDimensions.loginButtonMTop}
           onPress={handleSubmit(handleSubmitForm)}
         >
           <LogInText>{TextStrings.LogInFormButton}</LogInText>

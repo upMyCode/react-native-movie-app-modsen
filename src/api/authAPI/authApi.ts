@@ -1,26 +1,16 @@
+/* eslint-disable import/no-unresolved */
+import { API_KEY_DATABASE } from '@env';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { firebase } from '@react-native-firebase/database';
 import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import axios from 'axios';
 import { AccessToken, LoginManager } from 'react-native-fbsdk-next';
 
-type UserProfile = FirebaseAuthTypes.AdditionalUserInfo['profile'];
+import type { Error, USER, UserProfile } from '../types';
 
-interface USER {
-  id: string;
-  username: string;
-  usersurname: string;
-  useremail: string;
-}
-interface FirebaseErrorAPI {
-  code: string;
-  message: string;
-}
-
-function isFirebaseError(candidate: unknown): candidate is FirebaseErrorAPI {
+function isError(candidate: unknown): candidate is Error {
   if (candidate && typeof candidate === 'object' && 'code' in candidate) {
     return true;
   }
@@ -56,9 +46,7 @@ export const handleSignUpAPI = async (
     if (isUserCreated) {
       const authReference = firebase
         .app()
-        .database(
-          'https://modsen-movie-default-rtdb.europe-west1.firebasedatabase.app'
-        )
+        .database(API_KEY_DATABASE)
         .ref(`/users/${isUserCreated.user.uid}`);
 
       if (authReference) {
@@ -75,7 +63,7 @@ export const handleSignUpAPI = async (
 
     return null;
   } catch (error: unknown) {
-    if (isFirebaseError(error)) {
+    if (isError(error)) {
       return error.code;
     }
     return '';
@@ -92,9 +80,7 @@ export const handleSignInAPI = async (
     if (isUserAuth) {
       const authReference = firebase
         .app()
-        .database(
-          'https://modsen-movie-default-rtdb.europe-west1.firebasedatabase.app'
-        )
+        .database(API_KEY_DATABASE)
         .ref(`/users/${isUserAuth.user.uid}`);
 
       const userDataSnapshot = await authReference.once('value');
@@ -105,7 +91,7 @@ export const handleSignInAPI = async (
     }
     return null;
   } catch (error: unknown) {
-    if (isFirebaseError(error)) {
+    if (isError(error)) {
       return error.code;
     }
     return '';
@@ -124,9 +110,7 @@ export const handleSignInWithGoogleServiceAPI = async (): Promise<
     if (isUserCreated) {
       const authReference = firebase
         .app()
-        .database(
-          'https://modsen-movie-default-rtdb.europe-west1.firebasedatabase.app'
-        )
+        .database(API_KEY_DATABASE)
         .ref(`/users/${isUserCreated.user.id}`);
 
       if (authReference) {
@@ -144,7 +128,7 @@ export const handleSignInWithGoogleServiceAPI = async (): Promise<
 
     return null;
   } catch (error) {
-    if (isFirebaseError(error)) {
+    if (isError(error)) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         return 'Sign-in was canceled';
       }
@@ -195,9 +179,7 @@ export const handleSignInWithFacebookServiceAPI = async (): Promise<
         if (isFirebaseFacebookUser(currentUserInfo) && currentUserInfo) {
           const authReference = firebase
             .app()
-            .database(
-              'https://modsen-movie-default-rtdb.europe-west1.firebasedatabase.app'
-            )
+            .database(API_KEY_DATABASE)
             .ref(`/users/${currentUserInfo.id}`);
 
           if (authReference) {
@@ -216,37 +198,64 @@ export const handleSignInWithFacebookServiceAPI = async (): Promise<
     }
     return null;
   } catch (error) {
-    if (isFirebaseError(error)) {
+    if (isError(error)) {
       return error.code;
     }
     return '';
   }
 };
 
-export const handleGetMovies = async (label: string) => {
-  const options = {
-    method: 'GET',
-    url: 'https://ott-details.p.rapidapi.com/advancedsearch',
-    params: {
-      start_year: '1970',
-      end_year: '2020',
-      min_imdb: '7',
-      genre: label,
-      language: 'english',
-      type: 'movie',
-      sort: 'latest',
-      page: '1',
-    },
-    headers: {
-      'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-      'X-RapidAPI-Host': 'ott-details.p.rapidapi.com',
-    },
-  };
-
+export const getCurrentUserId = () => {
   try {
-    const response = await axios.request(options);
-    console.log(response.data);
+    return new Promise((res, rej) => {
+      const getUserInfo = firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          res(user.uid);
+        }
+
+        rej(new Error('user is not search'));
+      });
+
+      getUserInfo();
+    });
   } catch (error) {
-    console.log(error);
+    if (isError(error)) {
+      return error.code;
+    }
+
+    return '';
+  }
+};
+
+export const getCurrentUserById = async (): Promise<USER | string | null> => {
+  try {
+    const USER_ID = await getCurrentUserId();
+
+    if (USER_ID) {
+      const authReference = firebase
+        .app()
+        .database(API_KEY_DATABASE)
+        .ref(`/users/${USER_ID}`);
+
+      if (authReference) {
+        const snapshot = await authReference.once('value');
+
+        if (snapshot) {
+          const currentUser = snapshot.val();
+
+          if (snapshot) {
+            return currentUser;
+          }
+        }
+      }
+    }
+
+    return null;
+  } catch (error) {
+    if (isError(error)) {
+      return error.code;
+    }
+
+    return '';
   }
 };

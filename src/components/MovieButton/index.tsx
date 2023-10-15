@@ -1,3 +1,4 @@
+import { MovieButtonDimensions } from '@constants/dimensions';
 import { Button } from '@root';
 import movieButtonColor from '@theme/movieButtonColor';
 import React from 'react';
@@ -22,9 +23,9 @@ export default function MovieButton({
   return (
     <View>
       <Button
-        bRadius={5}
-        width={71}
-        height={22}
+        bRadius={MovieButtonDimensions.buttonBRadius}
+        width={MovieButtonDimensions.buttonWidth}
+        height={MovieButtonDimensions.buttonHeight}
         onPress={onPress}
         bgColor={
           getActiveStatus(text)

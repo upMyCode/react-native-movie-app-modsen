@@ -1,3 +1,5 @@
+import { InputDimensions } from '@constants/dimensions';
+import { ComplicityPasswordDarkTheme, InputDarkTheme } from '@theme/allThemes';
 import React from 'react';
 import { Controller, FieldValues } from 'react-hook-form';
 import { View } from 'react-native';
@@ -25,17 +27,27 @@ export default function Input<T extends FieldValues>({
   modalName,
 }: InputProps<T>) {
   const checkPasswordComplicity = (value: string) => {
+    const baseComplicityReg = /[A-Z]{1,}/g;
+    const extraSymbolsReg = /[.|,|!|?/]/g;
+    const rangeFromOneToSevenReg = /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{1,7})$/;
+    const rangeFromEightReg = /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{8,})$/;
+    const rangeFromEightToEleven = /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{8,11})$/;
+    const rangeFromTwelveToEighteen =
+      /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{12,16})$/;
+
     if (
       name === 'userpassword' &&
       value &&
       modalName === 'registration' &&
-      !/[A-Z]{1,}/g.test(value)
+      !baseComplicityReg.test(value)
     ) {
       return (
         <PasswordComplicityContainer>
-          <PasswordComplicityItem bgColor="#737373" />
-          <PasswordComplicityItem bgColor="#737373" />
-          <PasswordComplicityItem bgColor="#737373" />
+          {ComplicityPasswordDarkTheme.complicity1.map((complicity) => {
+            return (
+              <PasswordComplicityItem bgColor={complicity} key={complicity} />
+            );
+          })}
         </PasswordComplicityContainer>
       );
     }
@@ -43,17 +55,17 @@ export default function Input<T extends FieldValues>({
       name === 'userpassword' &&
       value &&
       modalName === 'registration' &&
-      /[A-Z]{1,}/g.test(value) &&
-      ((!/[.|,|!|?/]/g.test(value) &&
-        /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{1,7})$/.test(value)) ||
-        (/[.|,|!|?/]/g.test(value) &&
-          /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{1,7})$/.test(value)))
+      baseComplicityReg.test(value) &&
+      ((!extraSymbolsReg.test(value) && rangeFromOneToSevenReg.test(value)) ||
+        (extraSymbolsReg.test(value) && rangeFromOneToSevenReg.test(value)))
     ) {
       return (
         <PasswordComplicityContainer>
-          <PasswordComplicityItem bgColor="#04c711" />
-          <PasswordComplicityItem bgColor="#737373" />
-          <PasswordComplicityItem bgColor="#737373" />
+          {ComplicityPasswordDarkTheme.complicity2.map((complicity) => {
+            return (
+              <PasswordComplicityItem bgColor={complicity} key={complicity} />
+            );
+          })}
         </PasswordComplicityContainer>
       );
     }
@@ -61,17 +73,17 @@ export default function Input<T extends FieldValues>({
       name === 'userpassword' &&
       value &&
       modalName === 'registration' &&
-      /[A-Z]{1,}/g.test(value) &&
-      ((!/[.|,|!|?/]/g.test(value) &&
-        /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{8,})$/.test(value)) ||
-        (/[.|,|!|?/]/g.test(value) &&
-          /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{8,11})$/.test(value)))
+      baseComplicityReg.test(value) &&
+      ((!extraSymbolsReg.test(value) && rangeFromEightReg.test(value)) ||
+        (extraSymbolsReg.test(value) && rangeFromEightToEleven.test(value)))
     ) {
       return (
         <PasswordComplicityContainer>
-          <PasswordComplicityItem bgColor="#04c711" />
-          <PasswordComplicityItem bgColor="#c77204" />
-          <PasswordComplicityItem bgColor="#737373" />
+          {ComplicityPasswordDarkTheme.complicity3.map((complicity) => {
+            return (
+              <PasswordComplicityItem bgColor={complicity} key={complicity} />
+            );
+          })}
         </PasswordComplicityContainer>
       );
     }
@@ -79,15 +91,17 @@ export default function Input<T extends FieldValues>({
       name === 'userpassword' &&
       value &&
       modalName === 'registration' &&
-      /[A-Z]{1,}/g.test(value) &&
-      /[.|,|!|?/]/g.test(value) &&
-      /^((?=^\S+$)(?=.*\d)(?=.*[A-Za-z]).{12,16})$/.test(value)
+      baseComplicityReg.test(value) &&
+      extraSymbolsReg.test(value) &&
+      rangeFromTwelveToEighteen.test(value)
     ) {
       return (
         <PasswordComplicityContainer>
-          <PasswordComplicityItem bgColor="#04c711" />
-          <PasswordComplicityItem bgColor="#c77204" />
-          <PasswordComplicityItem bgColor="#db0016" />
+          {ComplicityPasswordDarkTheme.complicity4.map((complicity) => {
+            return (
+              <PasswordComplicityItem bgColor={complicity} key={complicity} />
+            );
+          })}
         </PasswordComplicityContainer>
       );
     }
@@ -96,7 +110,11 @@ export default function Input<T extends FieldValues>({
 
   return (
     <Wrapper>
-      <FormImage source={{ uri: icon }} width={24} height={26} />
+      <FormImage
+        source={{ uri: icon }}
+        width={InputDimensions.imageWidth}
+        height={InputDimensions.imageHeight}
+      />
       <FormContainer>
         <Controller
           control={control}
@@ -111,7 +129,7 @@ export default function Input<T extends FieldValues>({
                   maxLength={maxLength}
                   placeholder={placeholder}
                   keyboardType={formType}
-                  placeholderTextColor="#FFFFFF"
+                  placeholderTextColor={InputDarkTheme.placeholder}
                   secureTextEntry={secureTextEntry}
                   onBlur={onBlur}
                   autoCapitalize="none"

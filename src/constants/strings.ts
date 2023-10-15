@@ -6,9 +6,47 @@ enum TextStrings {
   RegistrationScreenAuthDescriptionLink = ' Login please.',
   RegistrationScreenFooterDescription = '2023 Version 0.0.1',
   RegistrationFormButton = 'Sign up',
+  RegistrationScreenModalContainerTitleError = 'Oops, you have auth errors',
+  RegistrationScreenModalContainerTitleRegistration = 'Create an account',
+  RegistrationScreenModalContainerTitleLogin = 'Sign in to an account',
   LogInFormButton = 'Sign in',
   LogInFormRedirectionToForgotPassword = 'Forgot password?',
   MainScreenComingSoonTitle = 'Coming Soon',
+  MainScreenNowShowingTitle = 'Now Showing',
+  AddCommentaryFormPlaceholder = 'Add a  comment...',
+  AddCommentaryFormControllerName = 'comment',
+  FilmDetailsScreenBookingButtonTitle = 'Get Tickets',
+  FilmDetailsScreenTimeDurationInfo = '2h 13m',
+  FilmDetailsScreenMoreButtonTitleHide = 'Hide',
+  FilmDetailsScreenMoreButtonTitleMore = 'More',
+  LogInFormInputNameUserEmail = 'useremail',
+  LogInFormInputNameUserEmailPlaceHolder = 'example@gmail.com',
+  LogInFormInputNameUserPassword = 'userpassword',
+  LogInFormInputNameUserPasswordPlaceHolder = '*************************',
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
+  TopFilmItemMoreButton = 'More',
+  TopFilmItemMoreGenre = 'Genre:',
+  TopFilmItemMoreAuthors = 'Authors:',
+  SessionButtonAvailableSeatsDescription = 'seats available',
+  RegistrationFormInut1Name = 'username',
+  RegistrationFormInut1placeholder = 'Enter your name',
+  RegistrationFormInut2Name = 'usersurname',
+  RegistrationFormInut2placeholder = 'Enter your surname',
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
+  RegistrationFormInut3Name = 'useremail',
+  RegistrationFormInut3placeholder = 'Enter your email',
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
+  RegistrationFormInut4Name = 'userpassword',
+  RegistrationFormInut4placeholder = 'Enter strong password',
+  AwardScreenModalTitle = 'FILTERS',
+  BookingSeatsScreenSchedule = 'Schedule',
+  BookingSeatsScreenSeats = 'Seats',
+  BookingSeatsScreenScreen = 'Screen',
+  BookingSeatsScreenModalTitle = 'Choose visiting day',
+  BookingSeatsScreenModalRedirections = 'Choose Cinema & Seats',
+  BookingSeatsScreenModalBookNow = 'Book Now',
 }
+
+export const SEAT_BUTTONS = ['Available', 'Reserved', 'Selected'];
 
 export default TextStrings;

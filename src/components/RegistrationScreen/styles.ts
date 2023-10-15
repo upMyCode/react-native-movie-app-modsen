@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 import type { AuthDescriptionItemProps, AuthTextContentProps } from './types';
@@ -91,3 +92,10 @@ export const AuthInErrorText = styled.Text`
 export const ErrorContainer = styled.View`
   margin: 0 17px 15px 25px;
 `;
+
+export const inlineStyles = StyleSheet.create({
+  flatList2: { justifyContent: 'space-between' },
+  flatList1: {
+    alignItems: 'center',
+  },
+});

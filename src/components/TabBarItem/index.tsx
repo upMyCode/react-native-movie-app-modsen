@@ -1,3 +1,4 @@
+import { TabBarItemDimensions } from '@constants/dimensions';
 import {
   ActiveAward,
   ActiveHome,
@@ -9,48 +10,43 @@ import {
   UnActiveUserProfile,
 } from '@helpers/images';
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image } from 'react-native';
 
 import { ActivityIndicator, Wrapper } from './styles';
 import { Item } from './types';
 
-export default function TabBarItem({
-  label,
-  isFocused,
-  options,
-  navigation,
-}: Item) {
+export default function TabBarItem({ label, isFocused }: Item) {
   const handleGetItemImage = (imageLabel: string) => {
     switch (imageLabel) {
-      case 'HomeScreen':
+      case 'HomeStackScreen':
         return (
           <Image
-            width={24}
-            height={24}
+            width={TabBarItemDimensions.imageWidth}
+            height={TabBarItemDimensions.imageHeight}
             source={{ uri: isFocused ? ActiveHome : UnActiveHome }}
           />
         );
-      case 'TopFilmsScreen':
+      case 'TopFilmStack':
         return (
           <Image
-            width={24}
-            height={24}
+            width={TabBarItemDimensions.imageWidth}
+            height={TabBarItemDimensions.imageHeight}
             source={{ uri: isFocused ? ActiveAward : UnActiveAward }}
           />
         );
       case 'TicketsScreen':
         return (
           <Image
-            width={24}
-            height={24}
+            width={TabBarItemDimensions.imageWidth}
+            height={TabBarItemDimensions.imageHeight}
             source={{ uri: isFocused ? ActiveTicket : UnActiveTicket }}
           />
         );
       case 'ProfileScreen':
         return (
           <Image
-            width={24}
-            height={24}
+            width={TabBarItemDimensions.imageWidth}
+            height={TabBarItemDimensions.imageHeight}
             source={{
               uri: isFocused ? ActiveUserProfile : UnActiveUserProfile,
             }}
@@ -61,21 +57,10 @@ export default function TabBarItem({
       }
     }
   };
-  const handlePressed = () => {
-    navigation.navigate(label);
-  };
 
   return (
     <Wrapper>
-      <TouchableOpacity
-        accessibilityRole="button"
-        accessibilityState={isFocused ? { selected: true } : {}}
-        accessibilityLabel={options.tabBarAccessibilityLabel}
-        testID={options.tabBarTestID}
-        onPress={handlePressed}
-      >
-        {handleGetItemImage(label)}
-      </TouchableOpacity>
+      {handleGetItemImage(label)}
       {isFocused && <ActivityIndicator />}
     </Wrapper>
   );

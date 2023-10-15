@@ -3,14 +3,28 @@ import {
   ActiveHomeIMG,
   ActiveTicketIMG,
   ActiveUserProfileIMG,
+  ArrowIMG,
+  ArrowLeftIMG,
+  ArrowRightIMG,
+  CalendarIMG,
+  ClockIMG,
   CrossIMG,
   EmailIMG,
+  FiltersIMG,
   LogoIMG,
+  MockTrailerIMG,
   PasswordIMG,
+  PlayIMG,
+  ReclinerIMG,
+  SearchIMG,
+  SingleArrowRightIMG,
+  StarIMG,
+  TicketIMG,
   UnActiveAwardIMG,
   UnActiveHomeIMG,
   UnActiveTicketIMG,
   UnActiveUserProfileIMG,
+  UserProfileIMG,
   UserRegistrationNameIMG,
   UserSurnameIMG,
 } from '@assets';
@@ -35,3 +49,18 @@ export const UnActiveTicket = Image.resolveAssetSource(UnActiveTicketIMG).uri;
 export const UnActiveUserProfile = Image.resolveAssetSource(
   UnActiveUserProfileIMG
 ).uri;
+export const MockTrailer = Image.resolveAssetSource(MockTrailerIMG).uri;
+export const Play = Image.resolveAssetSource(PlayIMG).uri;
+export const Clock = Image.resolveAssetSource(ClockIMG).uri;
+export const Arrow = Image.resolveAssetSource(ArrowIMG).uri;
+export const Ticket = Image.resolveAssetSource(TicketIMG).uri;
+export const UserProfile = Image.resolveAssetSource(UserProfileIMG).uri;
+export const Calendar = Image.resolveAssetSource(CalendarIMG).uri;
+export const ArrowRight = Image.resolveAssetSource(ArrowRightIMG).uri;
+export const ArrowLeft = Image.resolveAssetSource(ArrowLeftIMG).uri;
+export const Recliner = Image.resolveAssetSource(ReclinerIMG).uri;
+export const Search = Image.resolveAssetSource(SearchIMG).uri;
+export const Filters = Image.resolveAssetSource(FiltersIMG).uri;
+export const Star = Image.resolveAssetSource(StarIMG).uri;
+export const SingleArrowRight =
+  Image.resolveAssetSource(SingleArrowRightIMG).uri;

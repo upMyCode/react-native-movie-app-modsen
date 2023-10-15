@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createUserSlice from '@slices/createUserSlice';
+import getMoviesSlice from '@slices/getMoviesSlice';
 import { Action } from 'redux';
 import {
   createTransform,
@@ -33,6 +34,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers<State>({
   createUserSlice,
+  getMoviesSlice,
 });
 
 export type RootReducer = ReturnType<typeof rootReducer>;

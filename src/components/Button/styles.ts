@@ -5,6 +5,7 @@ import type { PaintedButtonProps } from './types';
 const PaintedButton = styled.TouchableOpacity<PaintedButtonProps>`
   position: relative;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: ${({ width }) => {
