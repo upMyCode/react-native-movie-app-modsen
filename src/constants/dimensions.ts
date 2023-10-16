@@ -123,6 +123,13 @@ export const BookingSeatsScreenDimensions = {
   buttonBRadius: 10,
 };
 
+export const CustomCalendarDimensions = {
+  arrowIconWidth: 15,
+  arrowIconHeight: 10,
+  modsenIconWidth: 60,
+  modsenIconHeight: 15,
+};
+
 export const SRC_WIDTH = WindowDimensions.windowWidth;
 export const CARD_LENGTH = SRC_WIDTH / 2;
 export const SPACING = SRC_WIDTH * 0.02;

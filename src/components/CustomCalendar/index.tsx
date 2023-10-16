@@ -1,3 +1,4 @@
+import { CustomCalendarDimensions } from '@constants/dimensions';
 import { ArrowLeft, ArrowRight, ModsenLogoIMG } from '@helpers/images';
 import { DayButton } from '@root';
 import { CustomCalendarDarkTheme } from '@theme/allThemes';
@@ -52,8 +53,8 @@ export default function CustomCalendar({
         renderArrow={(direction: 'left' | 'right') => {
           return (
             <Image
-              width={15}
-              height={10}
+              width={CustomCalendarDimensions.arrowIconWidth}
+              height={CustomCalendarDimensions.modsenIconHeight}
               source={{ uri: direction === 'left' ? ArrowLeft : ArrowRight }}
             />
           );
@@ -76,7 +77,11 @@ export default function CustomCalendar({
         maxDate={maxDate}
       />
       <ModsenLogoContainer>
-        <Image width={60} height={15} source={{ uri: ModsenLogoIMG }} />
+        <Image
+          width={CustomCalendarDimensions.modsenIconWidth}
+          height={CustomCalendarDimensions.modsenIconHeight}
+          source={{ uri: ModsenLogoIMG }}
+        />
       </ModsenLogoContainer>
     </View>
   );
